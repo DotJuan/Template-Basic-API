@@ -2,7 +2,7 @@ const express_server = require('express');
 const app = express_server();
 const port = 3000;
 
-app.get('/prod', (req, res) => {
+app.get('/', (req, res) => {
   res.send(`Hi!`);
 });
 
@@ -17,6 +17,14 @@ app.get('/products', (req, res) => {
     { name: 'Carne Res San Carlitano', price: 15000, units: 1 },
   ]);
 });
+
+app.get('/products/:id', (req,res) =>{
+  const {id} = req.params;
+  res.json({
+    name: 'Chorizo San Carlitano',
+    id
+  })
+})
 
 app.listen(port, () => {
   console.table({ port });
