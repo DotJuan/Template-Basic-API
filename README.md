@@ -1,3 +1,3 @@
-# node-aipavg
+# Template Basic
 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/node-aipavg)

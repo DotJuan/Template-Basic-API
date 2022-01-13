@@ -1,13 +1,12 @@
 const express_server = require('express');
 const app = express_server();
-const port = 3000;
+const port = 4000;
+
 
 app.get('/', (req, res) => {
-  res.send(`Hi!`);
-});
-
-app.get('/products', (req, res) => {
-  res.json([
+  const {limit, offset} = req.query;
+  if (limit && offset) {
+    res.json([
     {
       name: 'Chorizo San Carlitano',
       price: 15000,
@@ -16,6 +15,14 @@ app.get('/products', (req, res) => {
     { name: 'Chorizo Mini San Carlitano', price: 15000, units: 12 },
     { name: 'Carne Res San Carlitano', price: 15000, units: 1 },
   ]);
+  } else{
+    res.json({
+      data: {
+        desc: "Paginacion no habilitada"
+      }
+    })
+  }
+  
 });
 
 app.get('/products/:id', (req,res) =>{
